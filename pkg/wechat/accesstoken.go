@@ -73,8 +73,8 @@ func (this *AccessTokenAccessAt) Encode() []byte {
 }
 
 type GetAccessTokenArg struct {
-	AppId              string
-	CompareAccessToken string
+	AppId              string `json:"appId"`
+	CompareAccessToken string `json:"compareAccessToken"`
 	//MarkInvalid        bool
 }
 
