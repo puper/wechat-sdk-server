@@ -9,7 +9,7 @@
   -p 2380:2380 \
   --restart=always \
   -d \
-  -v /Users/puper/dev/docker/etcd/data:/etcd-data \
+  -v /etcd/data:/etcd-data \
   --name etcd \
   quay.io/coreos/etcd:v3.4.5 \
   /usr/local/bin/etcd \
