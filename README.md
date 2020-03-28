@@ -27,8 +27,11 @@
   --log-outputs stderr
   ```
 
+- build
+    - CGO_ENABLED=0 go build -mod=vendor -o wechat-sdk-server -v .
 - 启动
     - go run main.go serve --config=config/config.toml
+    - ./wechat-sdk-server serve --config=config/config.toml
 
 
 
