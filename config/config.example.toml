@@ -1,0 +1,31 @@
+debug = true
+
+[etcdcli]
+endpoints = ["127.0.0.1:2379"]
+dialTimeout = 5000
+
+[restycli]
+timeout = 5000
+maxIdleConns = 10
+idleConnTimeout = 30000
+insecureSkipVerify = true
+
+[wechat]
+apiDomain = "api.weixin.qq.com"
+etcdCliName = "etcdcli"
+restyCliName = "restycli"
+accessAtUpdateTime = 1800000
+dropAccessTokenNotUseTime = 86400000
+
+[log.default]
+        out = "std"
+        level = "debug"
+        format = "json"
+
+[log.access]
+        out = "std"
+        level = "info"
+        format = "json"
+
+[web]
+    addr = ":80"
