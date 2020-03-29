@@ -127,8 +127,7 @@ type CheckUserAccessTokenArg struct {
 }
 
 type CheckUserAccessTokenReply struct {
-	ErrCode int64  `json:"errCode"`
-	ErrMsg  string `json:"errMsg"`
+	Valid bool `json:"valid"`
 }
 
 func CheckUserAccessToken(arg *CheckUserAccessTokenArg) (reply *CheckUserAccessTokenReply, err error) {
@@ -142,5 +141,8 @@ func CheckUserAccessToken(arg *CheckUserAccessTokenArg) (reply *CheckUserAccessT
 			),
 		)
 	err = parseResponse(response, err, reply)
+	if apiErr, ok := err.(*ApiError); ok && apiErr.Type == ErrTypeApi && apiErr.Code == InvalidOpenId {
+		return reply, nil
+	}
 	return reply, err
 }

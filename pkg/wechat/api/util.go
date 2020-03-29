@@ -19,6 +19,7 @@ func parseResponse(response *resty.Response, err error, reply interface{}) error
 	if errCode != Success {
 
 		return &ApiError{
+			Type:    ErrTypeApi,
 			Code:    j.Get("errcode").Int(),
 			Message: j.Get("errmsg").String(),
 		}

@@ -189,9 +189,7 @@ func (this *Wechat) watch(rev int64) int64 {
 								accessAt = this.accessAts[refreshAccessToken.AppId].AccessAt
 							}
 							this.accessAtMutex.RUnlock()
-							fmt.Println(1111, string(event.PrevKv.Value))
 							if ok {
-								fmt.Println("autorefresh")
 								if time.Now().Unix()-accessAt <= this.config.DropAccessTokenNotUseTime/1e3 {
 									go func() {
 										time.Sleep(time.Millisecond * time.Duration(rand.Intn(10000)))

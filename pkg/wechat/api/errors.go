@@ -3,10 +3,11 @@ package api
 import "fmt"
 
 const (
-	Success     = 0
-	ErrTypeConn = "connerr"
-	ErrTypeResp = "resperr"
-	ErrTypeApi  = "apierr"
+	Success       = 0
+	InvalidOpenId = 40003
+	ErrTypeConn   = "connerr"
+	ErrTypeResp   = "resperr"
+	ErrTypeApi    = "apierr"
 )
 
 type ApiError struct {
