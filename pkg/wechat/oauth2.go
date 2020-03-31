@@ -17,6 +17,14 @@ type GetUserAccessTokenReply = api.GetUserAccessTokenReply
 
 func (this *Wechat) GetUserAccessToken(arg *GetUserAccessTokenArg) (reply *GetUserAccessTokenReply, err error) {
 	arg.Client = this.config.RestyCli
+	app, err := this.GetApp(&GetAppArg{
+		AppId: arg.AppId,
+	})
+	if err != nil {
+		return nil, err
+	}
+	arg.Domain = this.config.ApiDomain
+	arg.Secret = app.Secret
 	return api.GetUserAccessToken(arg)
 }
 
@@ -35,6 +43,7 @@ type GetUserInfoReply = api.GetUserInfoReply
 
 func (this *Wechat) GetUserInfo(arg *GetUserInfoArg) (reply *GetUserInfoReply, err error) {
 	arg.Client = this.config.RestyCli
+	arg.Domain = this.config.ApiDomain
 	return api.GetUserInfo(arg)
 }
 
